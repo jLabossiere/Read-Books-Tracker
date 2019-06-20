@@ -21,7 +21,13 @@ class Search extends React.Component {
       if (books === undefined || books.error) {
         return []
       } else {
-        return Promise.all(books.map(book => BooksAPI.get(book.id)))
+        return books.map(book => {
+          if (this.props.shelf.findIndex(i => i.id === book.id) !== -1) {
+            return this.props.shelf[this.props.shelf.findIndex(i => i.id === book.id)]
+          } else {
+            return { ...book, shelf: 'none' }
+          }
+        })
       }
     }).then(books => {
       this.setState({

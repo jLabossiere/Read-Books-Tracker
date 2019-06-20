@@ -7,22 +7,14 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 
 class BooksApp extends React.Component {
   state = {
-    myShelf: {
-      currentlyReading: [],
-      wantToRead: [],
-      read: []
-    }
+    myShelf: []
 
   }
 
   updateShelf() {
     BooksAPI.getAll().then(shelf => {
       this.setState({
-        myShelf: {
-          currentlyReading: shelf.filter(book => book.shelf === "currentlyReading"),
-          wantToRead: shelf.filter(book => book.shelf === "wantToRead"),
-          read: shelf.filter(book => book.shelf === "read")
-        }
+        myShelf: shelf
       })
     })
   }

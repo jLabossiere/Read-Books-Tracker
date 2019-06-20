@@ -11,6 +11,7 @@ class Home extends React.Component {
 
   render() {
     return (
+
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
@@ -18,17 +19,17 @@ class Home extends React.Component {
         <div className="list-books-content">
           <div>
             <BookShelf name='Currently Reading'
-              shelf={this.props.shelf.currentlyReading}
+              shelf={this.props.shelf.filter(book => book.shelf === "currentlyReading")}
               updateShelf={this.props.updateShelf}
               shelfId='currentlyReading'
             />
             <BookShelf name='Want To Read'
-              shelf={this.props.shelf.wantToRead}
+              shelf={this.props.shelf.filter(book => book.shelf === "wantToRead")}
               updateShelf={this.props.updateShelf}
               shelfId='wantToRead'
             />
             <BookShelf name='Read'
-              shelf={this.props.shelf.read}
+              shelf={this.props.shelf.filter(book => book.shelf === "read")}
               updateShelf={this.props.updateShelf}
               shelfId='read'
             />
