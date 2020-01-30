@@ -8,7 +8,6 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 class BooksApp extends React.Component {
   state = {
     myShelf: []
-
   }
 
   updateShelf() {
